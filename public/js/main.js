@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.classList.remove("editing");
       btn.hidden = true;
       form.querySelector(".save-btn").hidden = true;
-      form.querySelector(".delete-btn").hidden = true; 
+      form.querySelector(".delete-btn").hidden = false; 
       form.querySelector(".edit-btn").hidden = false;
     });
   });
