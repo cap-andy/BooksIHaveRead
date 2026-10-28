@@ -1,5 +1,48 @@
 <%- include('partials/header.ejs'); -%>
 
+<div id="booksContainer">
+    <% books.forEach(function(book) { %>
+        <div class="book">
+            <form action="/update-book" method="post">
+                <input type="hidden" name="id" value="<%= book.id %>">
 
+                <div class="book-cover-wrap">
+                    <% if (book.isbn) { %>
+                        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="<%= book.title %> cover">
+                    <% } else if (book.cover_id) { %>
+                        <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" alt="<%= book.title %> cover">
+                    <% } else { %>
+                        <span>No cover</span>
+                    <% } %>
+                </div>
+
+                <h2><span class="disp" data-field="title"><%= book.title %></span>
+                <input class="edit" type="text" name="title" value="<%= book.title %>" disabled></h2>
+
+                <p>Author: <span class="disp" data-field="author"><%= book.author %></span>
+                <input class="edit" type="text" name="author" value="<%= book.author %>" disabled></p>
+
+                <p>Genre: <span class="disp" data-field="genre"><%= book.genre %></span>
+                <input class="edit" type="text" name="genre" value="<%= book.genre %>" disabled></p>
+
+                <p>Year: <span class="disp" data-field="published"><%= book.published %></span>
+                <input class="edit" type="number" name="published" value="<%= book.published %>" disabled></p>
+
+                <p>ISBN: <span class="disp" data-field="isbn"><%= book.isbn %></span>
+                <input class="edit" type="text" name="isbn" value="<%= book.isbn %>" disabled></p>
+
+                <p class="summary-line">Summary: <span class="disp" data-field="summary"><%= book.summary %></span>
+                <textarea class="edit" name="summary" disabled><%= book.summary %></textarea></p>
+
+                <div class="book-actions">
+                    <button type="button" class="edit-btn">Update Book</button>
+                    <button type="button" class="delete-btn">Delete Book</button>
+                    <button type="button" class="cancel-btn" hidden>Cancel</button>
+                    <button type="submit" class="save-btn" hidden>Save</button>
+                </div>
+            </form>
+        </div>
+    <% }); %>
+</div>
 
 <%- include('partials/footer.ejs'); -%>
