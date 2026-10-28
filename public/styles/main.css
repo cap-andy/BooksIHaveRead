@@ -1,0 +1,266 @@
+:root {
+  --bg: #f7f5f2;
+  --surface: #ffffff;
+  --border: #e2ddd5;
+  --text: #2b2b2b;
+  --text-muted: #6b6b6b;
+  --accent: #4a6b57;
+  --accent-hover: #3b5645;
+  --danger: #b5493f;
+  --danger-hover: #973c34;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  background: #e2ddd5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+}
+
+/* search */
+#searchInput {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1.5rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 1rem;
+}
+
+#searchInput:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* add-book */
+.addBookButtonContainer {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.addBookContainer {
+  display: none;
+  max-width: 400px;
+  margin: 0 auto 2rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.addBookContainer.visible {
+  display: block;
+}
+
+.addBookContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* book cards */
+#booksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.book {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  flex: 1 1 280px;
+  max-width: 300px;
+}
+
+.book h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  min-height: 2.4em;
+}
+
+.book p {
+  margin: 0.35rem 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.book p .disp {
+  color: var(--text);
+}
+
+.summary-line {
+  max-height: 100px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.summary-line textarea.edit {
+  max-height: 100px;
+}
+
+/* shared field inputs/textarea */
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+input:disabled,
+textarea:disabled {
+  background: var(--bg);
+  color: var(--text-muted);
+  border-color: transparent;
+}
+
+/* edit/display toggle */
+.edit {
+  display: none;
+}
+
+form.editing .disp {
+  display: none;
+}
+
+form.editing .edit {
+  display: inline-block;
+}
+
+form.editing textarea.edit {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.book-cover-wrap {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  height: auto;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-cover-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.book-cover-wrap span {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* buttons */
+.book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.addBookButtonContainer button,
+.addBookContainer button[type="submit"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+.addBookButtonContainer button:hover,
+.addBookContainer button[type="submit"]:hover {
+  background: var(--accent-hover);
+}
+
+.edit-btn,
+.save-btn {
+  background: var(--accent);
+  color: #fff;
+}
+
+.edit-btn:hover,
+.save-btn:hover {
+  background: var(--accent-hover);
+}
+
+.cancel-btn {
+  background: var(--border);
+  color: var(--text);
+}
+
+.cancel-btn:hover {
+  background: #d4cdc2;
+}
+
+.delete-btn {
+  background: var(--danger);
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: var(--danger-hover);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1.5rem 1rem 3rem;
+  }
+}

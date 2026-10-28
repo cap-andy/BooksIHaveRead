@@ -10,4 +10,23 @@
 </head>
 
 <body>
-  <main>
+
+    <h1>BOOKS I HAVE READ</h1>
+    <input type="search" placeholder="Search books..." id="searchInput">
+
+    <div class="addBookButtonContainer">
+        <button type="button" id="showAddBookBtn">Add Book</button>
+    </div>
+
+    <div class="addBookContainer" id="addBookContainer">
+        <form action="/add-book" method="post">
+            <input type="text" name="title" placeholder="Title" required>
+            <input type="text" name="author" placeholder="Author" required>
+            <input type="text" name="genre" placeholder="Genre" required>
+            <input type="number" name="published" placeholder="Year Published" required>
+            <textarea name="summary" placeholder="Summary"></textarea>
+            <input type="text" name="isbn" placeholder="ISBN (for cover image)">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <main>
